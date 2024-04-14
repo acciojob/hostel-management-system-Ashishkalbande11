@@ -12,14 +12,28 @@ public class HostelManagement {
 
     public void addStudent(String studentId, String name) {
     	//your code goes here
+        studentRoomMap.put(studentId, name);
     }
 
     public void allocateRoom(String studentId, String roomNumber) {
     	//your code goes here
+        if(studentRoomMap.containsKey(studentId)){
+            studentRoomMap.put(studentId,roomNumber);
+        }else{
+            System.out.println("Invaild studentId");
+        }
+
     }
 
     public boolean isRoomAvailable(String roomNumber) {
+
     	//your code goes here
+        for(String studentId : studentRoomMap.keySet()){
+            if(studentRoomMap.get(studentId).equals(roomNumber)){
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
